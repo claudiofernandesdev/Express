@@ -1,7 +1,7 @@
 exports.home = (req, res) => {
-  res.render("index");
+	res.render('index');
 };
 
 exports.sendForm = (req, res) => {
-  res.send(req.body);
+	res.send(req.body);
 };
