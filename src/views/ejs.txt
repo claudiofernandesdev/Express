@@ -1,0 +1,28 @@
+TAG
+<%Marca 'Scriptlet', para fluxo de controle, sem saída (if, for, ...)
+<%_Marca Scriptlet 'Whitespace Slurping', remove todos os espaços em branco antes dela
+<%=Gera o valor no modelo (HTML escapado --> exibe as tags HTML adicionadas)
+<%-Gera o valor sem escape no modelo
+<%#Tag de comentário, sem execução, sem saída
+<%%Gera um literal '<%'
+%>Marca final simples
+-%>Tag do modo de corte ('newline slurp'), apara seguindo a nova linha
+_%>Tag de finalização 'Whitespace Slurping', remove todos os espaços em branco depois dela
+
+CONTROLE DE FLUXO
+<% if(< condição >) { %>
+  < código >
+  <% } else { %>
+  < outro código >
+  <% } %>
+
+INCLUDE
+As inclusões são relativas ao modelo com a includechamada. (Isso requer a opção 'filename'.) Por exemplo, se você tiver "./views/users.ejs" e "./views/user/show.ejs" você usaria <%- include('user/show'); %>.
+Você provavelmente desejará usar a tag de saída bruta ( <%-) com sua inclusão para evitar o escape duplo da saída HTML.
+
+Exemplo:
+<ul>
+  <% users.forEach((user) => { %>
+    <%- include('user/show', {user: user}); %>
+  <% }); %>
+</ul>
